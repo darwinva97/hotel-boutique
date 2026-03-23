@@ -1,0 +1,362 @@
+---
+import Page from '../../layouts/Page.astro';
+import Booking from '../../components/Booking.astro';
+
+const rooms = [
+  {
+    name: 'Habitacion Inti',
+    type: 'Superior',
+    price: 180,
+    size: '25m\u00b2',
+    maxGuests: 2,
+    image: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80',
+    description: 'Nuestra acogedora habitacion superior ofrece una experiencia intima y autentica. Decorada con textiles andinos tejidos a mano, muebles de cedro tallado y arte cusqueno original. Ventanas con vista a los tejados coloniales de la ciudad.',
+    amenities: ['WiFi de alta velocidad', 'TV pantalla plana 43"', 'Minibar', 'Caja fuerte', 'Calefaccion', 'Bano con ducha de lluvia', 'Amenities organicos', 'Servicio de turndown'],
+    view: 'Vista a la ciudad',
+  },
+  {
+    name: 'Suite Quilla',
+    type: 'Junior Suite',
+    price: 280,
+    size: '40m\u00b2',
+    maxGuests: 2,
+    image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80',
+    description: 'La Suite Quilla (Luna en quechua) es un refugio romantico con vista al patio interior del hotel. Incluye una elegante sala de estar independiente y una chimenea de piedra original del siglo XVII que crea una atmosfera magica en las noches cusquenas.',
+    amenities: ['WiFi de alta velocidad', 'TV pantalla plana 50"', 'Minibar premium', 'Caja fuerte', 'Chimenea de piedra', 'Sala de estar', 'Calefaccion', 'Bano con tina', 'Amenities L\'Occitane', 'Albornoz y pantuflas'],
+    view: 'Patio interior + Chimenea',
+  },
+  {
+    name: 'Suite Imperial',
+    type: 'Suite',
+    price: 380,
+    size: '55m\u00b2',
+    maxGuests: 3,
+    image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80',
+    description: 'Nuestra joya. La Suite Imperial combina el esplendor colonial con el lujo contemporaneo. Terraza privada con jacuzzi y vistas espectaculares a las montanas cusquenas. Techos abovedados con frescos restaurados, chimenea y un bano de marmol con tina independiente.',
+    amenities: ['WiFi de alta velocidad', 'TV pantalla plana 55"', 'Minibar premium', 'Caja fuerte', 'Jacuzzi en terraza', 'Terraza privada', 'Chimenea', 'Sala de estar', 'Calefaccion', 'Bano de marmol con tina', 'Amenities Hermes', 'Albornoz y pantuflas', 'Maquina Nespresso', 'Mayordomo dedicado'],
+    view: 'Terraza + Jacuzzi + Vista a montanas',
+    slug: '/habitaciones/suite-imperial',
+  },
+  {
+    name: 'Suite Pachacamac',
+    type: 'Grand Suite',
+    price: 520,
+    size: '75m\u00b2',
+    maxGuests: 4,
+    image: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&q=80',
+    description: 'La experiencia mas exclusiva de Casa Inti. Dos amplios ambientes con decoracion de epoca, terraza privada con vista panoramica de 180 grados sobre Cusco y las montanas. Ideal para familias o parejas que buscan el maximo lujo y privacidad.',
+    amenities: ['WiFi de alta velocidad', 'TV pantalla plana 65"', 'Minibar ultra-premium', 'Caja fuerte grande', 'Jacuzzi doble en terraza', 'Terraza privada panoramica', 'Chimenea', '2 ambientes', 'Comedor privado', 'Calefaccion', 'Bano doble de marmol', 'Amenities Hermes', 'Albornoz y pantuflas', 'Maquina Nespresso', 'Mayordomo 24h', 'Check-in/out privado'],
+    view: '2 ambientes + Terraza + Vista panoramica',
+  },
+];
+
+const features = [
+  { feature: 'Tamano', inti: '25m\u00b2', quilla: '40m\u00b2', imperial: '55m\u00b2', pachacamac: '75m\u00b2' },
+  { feature: 'Huespedes max.', inti: '2', quilla: '2', imperial: '3', pachacamac: '4' },
+  { feature: 'Vista', inti: 'Ciudad', quilla: 'Patio', imperial: 'Montanas', pachacamac: 'Panoramica' },
+  { feature: 'Chimenea', inti: '\u2014', quilla: '\u2713', imperial: '\u2713', pachacamac: '\u2713' },
+  { feature: 'Jacuzzi', inti: '\u2014', quilla: '\u2014', imperial: '\u2713', pachacamac: '\u2713 Doble' },
+  { feature: 'Terraza', inti: '\u2014', quilla: '\u2014', imperial: '\u2713', pachacamac: '\u2713 Panoramica' },
+  { feature: 'Mayordomo', inti: '\u2014', quilla: '\u2014', imperial: '\u2713', pachacamac: '\u2713 24h' },
+  { feature: 'Sala de estar', inti: '\u2014', quilla: '\u2713', imperial: '\u2713', pachacamac: '\u2713 + Comedor' },
+];
+---
+<Page title="Habitaciones - Casa Inti Hotel Boutique" description="12 habitaciones exclusivas en el corazon de Cusco. Desde la acogedora Habitacion Inti hasta la lujosa Suite Pachacamac.">
+  <section class="rooms-hero">
+    <div class="rooms-hero-bg">
+      <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=1920&q=80" alt="Habitaciones Casa Inti" />
+    </div>
+    <div class="rooms-hero-overlay"></div>
+    <div class="rooms-hero-content container">
+      <p class="rooms-hero-label">Alojamiento</p>
+      <h1>Nuestras Habitaciones</h1>
+      <div class="gold-divider"><span>&#9788;</span></div>
+      <p>12 habitaciones unicas donde la historia colonial se encuentra con el lujo contemporaneo</p>
+    </div>
+  </section>
+
+  <section class="rooms-list section">
+    <div class="container">
+      {rooms.map((room, i) => (
+        <div class={`room-detail ${i % 2 === 1 ? 'reverse' : ''}`}>
+          <div class="room-detail-image">
+            <img src={room.image} alt={room.name} loading="lazy" />
+            <span class="room-detail-type">{room.type}</span>
+          </div>
+          <div class="room-detail-info">
+            <h2>{room.name}</h2>
+            <div class="room-detail-meta">
+              <span>{room.size}</span>
+              <span>&middot;</span>
+              <span>Max. {room.maxGuests} huespedes</span>
+              <span>&middot;</span>
+              <span>{room.view}</span>
+            </div>
+            <p class="room-detail-desc">{room.description}</p>
+            <div class="room-detail-amenities">
+              {room.amenities.map((a) => (
+                <span class="amenity-tag">{a}</span>
+              ))}
+            </div>
+            <div class="room-detail-footer">
+              <div class="room-detail-price">
+                <span class="price-lg">${room.price}</span>
+                <span class="price-sm">/ noche</span>
+              </div>
+              <a href={room.slug || '#reservar'} class="btn btn-gold">
+                {room.slug ? 'Ver Detalles' : 'Reservar'}
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="comparison section">
+    <div class="container">
+      <h2 class="section-title">Comparar Habitaciones</h2>
+      <div class="gold-divider"><span>&#9788;</span></div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Caracteristica</th>
+              <th>Hab. Inti<br /><small>$180/noche</small></th>
+              <th>Suite Quilla<br /><small>$280/noche</small></th>
+              <th>Suite Imperial<br /><small>$380/noche</small></th>
+              <th>Suite Pachacamac<br /><small>$520/noche</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            {features.map((f) => (
+              <tr>
+                <td class="feature-name">{f.feature}</td>
+                <td>{f.inti}</td>
+                <td>{f.quilla}</td>
+                <td>{f.imperial}</td>
+                <td>{f.pachacamac}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <Booking />
+</Page>
+
+<style>
+  .rooms-hero {
+    position: relative;
+    height: 50vh;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .rooms-hero-bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .rooms-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .rooms-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(28,25,23,0.65);
+  }
+
+  .rooms-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+  }
+
+  .rooms-hero-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .rooms-hero-content h1 {
+    color: #fff;
+    font-weight: 300;
+  }
+
+  .rooms-hero-content p {
+    color: rgba(255,255,255,0.8);
+    font-size: 1.1rem;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .room-detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 5rem;
+    padding-bottom: 5rem;
+    border-bottom: 1px solid rgba(184,134,11,0.12);
+  }
+
+  .room-detail:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .room-detail.reverse {
+    direction: rtl;
+  }
+
+  .room-detail.reverse > * {
+    direction: ltr;
+  }
+
+  .room-detail-image {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+  }
+
+  .room-detail-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .room-detail-type {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--gold);
+    color: #fff;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .room-detail-info h2 {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
+
+  .room-detail-meta {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .room-detail-desc {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .room-detail-amenities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .amenity-tag {
+    font-size: 0.72rem;
+    padding: 0.25rem 0.6rem;
+    border: 1px solid #e7e5e4;
+    color: var(--text-light);
+  }
+
+  .room-detail-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(184,134,11,0.12);
+  }
+
+  .price-lg {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--primary);
+    font-weight: 500;
+  }
+
+  .price-sm {
+    font-size: 0.85rem;
+    color: var(--text-light);
+  }
+
+  .table-wrapper {
+    overflow-x: auto;
+    margin-top: 2rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+
+  th {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    padding: 1rem;
+    text-align: center;
+    background: var(--cream);
+    border-bottom: 2px solid var(--gold);
+    font-size: 1rem;
+  }
+
+  th small {
+    display: block;
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 0.75rem;
+    color: var(--gold);
+    margin-top: 0.25rem;
+  }
+
+  th:first-child {
+    text-align: left;
+  }
+
+  td {
+    padding: 0.875rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid #f5f5f4;
+  }
+
+  .feature-name {
+    text-align: left;
+    font-weight: 400;
+    color: var(--secondary);
+  }
+
+  @media (max-width: 768px) {
+    .room-detail {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .room-detail.reverse { direction: ltr; }
+    .room-detail-image { height: 280px; }
+  }
+</style>

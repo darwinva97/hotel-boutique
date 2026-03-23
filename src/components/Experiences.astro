@@ -1,0 +1,193 @@
+---
+const experiences = [
+  {
+    icon: '\u{1F3D4}\uFE0F',
+    title: 'Tour Privado a Machu Picchu',
+    duration: 'Dia completo',
+    price: '$350',
+    image: 'https://images.unsplash.com/photo-1587595431973-160d0d163571?w=600&q=80',
+    description: 'Viaje exclusivo en tren panoramico con guia privado bilingue. Incluye almuerzo gourmet en Aguas Calientes.',
+  },
+  {
+    icon: '\u{1F37D}\uFE0F',
+    title: 'Cena Degustacion Andina',
+    duration: '3 horas',
+    price: '$120',
+    image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80',
+    description: 'Menu de 7 tiempos con ingredientes andinos ancestrales, maridado con vinos y piscos seleccionados.',
+  },
+  {
+    icon: '\u{1F486}',
+    title: 'Spa con Rituales Incas',
+    duration: '2 horas',
+    price: '$95',
+    image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&q=80',
+    description: 'Masaje con piedras calientes de obsidiana, exfoliacion con sales de Maras y bano de flores andinas.',
+  },
+  {
+    icon: '\u{1F97E}',
+    title: 'Trekking al Valle Sagrado',
+    duration: '8 horas',
+    price: '$180',
+    image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=600&q=80',
+    description: 'Recorrido por las ruinas de Ollantaytambo, Pisac y las salineras de Maras con almuerzo campestre.',
+  },
+  {
+    icon: '\u{1F3A8}',
+    title: 'Clase de Ceramica Cusquena',
+    duration: '3 horas',
+    price: '$65',
+    image: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=600&q=80',
+    description: 'Aprenda tecnicas ancestrales de ceramica con un maestro artesano en su taller del barrio de San Blas.',
+  },
+  {
+    icon: '\u{1F31F}',
+    title: 'Ceremonia de Ofrenda a la Pachamama',
+    duration: '2 horas',
+    price: '$75',
+    image: 'https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=600&q=80',
+    description: 'Participe en una autentica ceremonia de agradecimiento a la Madre Tierra guiada por un chamán andino.',
+  },
+];
+---
+<section class="experiences section" id="experiencias">
+  <div class="container">
+    <p class="section-label">Descubra</p>
+    <h2 class="section-title">Experiencias Unicas</h2>
+    <div class="gold-divider"><span>&#9788;</span></div>
+    <p class="section-subtitle">Viva momentos inolvidables con nuestras experiencias curadas exclusivamente para huespedes de Casa Inti</p>
+    <div class="exp-grid">
+      {experiences.map((exp) => (
+        <div class="exp-card">
+          <div class="exp-image">
+            <img src={exp.image} alt={exp.title} loading="lazy" />
+            <div class="exp-overlay">
+              <span class="exp-icon">{exp.icon}</span>
+            </div>
+          </div>
+          <div class="exp-info">
+            <h3>{exp.title}</h3>
+            <p class="exp-desc">{exp.description}</p>
+            <div class="exp-meta">
+              <span class="exp-duration">{exp.duration}</span>
+              <span class="exp-price">{exp.price} <small>por persona</small></span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-label {
+    text-align: center;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .exp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .exp-card {
+    border: 1px solid rgba(184,134,11,0.12);
+    background: #fff;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .exp-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(28,25,23,0.08);
+  }
+
+  .exp-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .exp-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+
+  .exp-card:hover .exp-image img {
+    transform: scale(1.08);
+  }
+
+  .exp-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(28,25,23,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .exp-icon {
+    font-size: 2.5rem;
+  }
+
+  .exp-info {
+    padding: 1.5rem;
+  }
+
+  .exp-info h3 {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .exp-desc {
+    font-size: 0.88rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .exp-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(184,134,11,0.1);
+  }
+
+  .exp-duration {
+    font-size: 0.78rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .exp-price {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: var(--primary);
+    font-weight: 500;
+  }
+
+  .exp-price small {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    color: var(--text-light);
+  }
+
+  @media (max-width: 900px) {
+    .exp-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 600px) {
+    .exp-grid { grid-template-columns: 1fr; }
+  }
+</style>

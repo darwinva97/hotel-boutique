@@ -1,0 +1,139 @@
+---
+const reviews = [
+  {
+    name: 'Sarah & James Mitchell',
+    location: 'New York, USA',
+    rating: 5,
+    text: 'The best hotel experience we have ever had. Casa Inti is a hidden gem in the heart of Cusco. The attention to detail, the warmth of the staff, and the stunning colonial architecture made our stay truly magical. We will definitely return.',
+    date: 'Enero 2026',
+  },
+  {
+    name: 'Victoria Ashworth',
+    location: 'London, UK',
+    rating: 5,
+    text: 'Absolutely exquisite. Every corner of this hotel tells a story. The Suite Imperial with its private terrace overlooking the Andes was breathtaking. The restaurant alone is worth the trip to Cusco. Pure luxury with authentic Peruvian soul.',
+    date: 'Noviembre 2025',
+  },
+  {
+    name: 'Carlos & Ana Ferreira',
+    location: 'Sao Paulo, Brasil',
+    rating: 5,
+    text: 'Uma experiencia inesquecivel. O hotel combina perfeitamente o luxo moderno com a historia colonial. O spa com rituais incas foi o ponto alto da nossa viagem. A equipe do hotel organizou excursoes incriveis. Altamente recomendado!',
+    date: 'Diciembre 2025',
+  },
+];
+---
+<section class="testimonials section">
+  <div class="container">
+    <p class="section-label">Testimonios</p>
+    <h2 class="section-title">Lo que dicen nuestros huespedes</h2>
+    <div class="gold-divider"><span>&#9788;</span></div>
+    <p class="section-subtitle">Experiencias reales de viajeros que eligieron Casa Inti</p>
+    <div class="reviews-grid">
+      {reviews.map((review) => (
+        <div class="review-card">
+          <div class="review-stars">
+            {Array.from({ length: review.rating }).map(() => (
+              <span class="star">&#9733;</span>
+            ))}
+          </div>
+          <p class="review-text">"{review.text}"</p>
+          <div class="review-author">
+            <div class="review-avatar">{review.name.charAt(0)}</div>
+            <div>
+              <p class="review-name">{review.name}</p>
+              <p class="review-location">{review.location} &middot; {review.date}</p>
+            </div>
+          </div>
+          <div class="review-source">TripAdvisor</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-label {
+    text-align: center;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .review-card {
+    background: #fff;
+    padding: 2rem;
+    border: 1px solid rgba(184,134,11,0.12);
+    position: relative;
+  }
+
+  .review-stars {
+    margin-bottom: 1rem;
+  }
+
+  .star {
+    color: var(--gold);
+    font-size: 1rem;
+    margin-right: 2px;
+  }
+
+  .review-text {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--secondary);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .review-author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .review-avatar {
+    width: 40px;
+    height: 40px;
+    background: var(--gold);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+  }
+
+  .review-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  .review-location {
+    font-size: 0.78rem;
+    color: var(--text-light);
+  }
+
+  .review-source {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 0.7rem;
+    color: var(--text-light);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 900px) {
+    .reviews-grid { grid-template-columns: 1fr; }
+  }
+</style>

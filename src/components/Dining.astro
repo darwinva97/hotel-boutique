@@ -1,0 +1,138 @@
+---
+const dishes = [
+  { name: 'Ceviche de Trucha Andina', desc: 'Trucha del Lago Titicaca marinada en limon cusqueno, con choclo serrano y cancha.', price: '$28' },
+  { name: 'Lomo de Alpaca en Costra de Quinua', desc: 'Corte premium de alpaca con costra de quinua tricolor, pure de papas nativas y jus de huacatay.', price: '$38' },
+  { name: 'Risotto de Chuño y Setas del Bosque', desc: 'Chuño negro transformado en un risotto cremoso con setas silvestres y aceite de muña.', price: '$32' },
+  { name: 'Suspiro de Lucuma', desc: 'Crema de lucuma con merengue de pisco, crumble de kiwicha y helado de chirimoya.', price: '$18' },
+];
+---
+<section class="dining section" id="gastronomia">
+  <div class="container">
+    <div class="dining-grid">
+      <div class="dining-image">
+        <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb51f3a?w=800&q=80" alt="Restaurante Sumaq" loading="lazy" />
+      </div>
+      <div class="dining-content">
+        <p class="dining-label">Gastronomia</p>
+        <h2>Restaurante Sumaq</h2>
+        <div class="gold-divider" style="justify-content:flex-start;"><span>&#9788;</span></div>
+        <p class="dining-intro">Haute cuisine andina de la mano del Chef <strong>Ricardo Valdivia</strong>, quien reinterpreta recetas ancestrales con tecnicas contemporaneas y productos de la region.</p>
+        <p class="dining-note">Desayuno incluido para huespedes &middot; Cena abierta al publico con reserva</p>
+        <div class="menu-highlights">
+          <h4>Menu Destacado</h4>
+          {dishes.map((dish) => (
+            <div class="dish">
+              <div class="dish-header">
+                <span class="dish-name">{dish.name}</span>
+                <span class="dish-line"></span>
+                <span class="dish-price">{dish.price}</span>
+              </div>
+              <p class="dish-desc">{dish.desc}</p>
+            </div>
+          ))}
+        </div>
+        <a href="#reservar" class="btn btn-outline-dark">Reservar Mesa</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .dining-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .dining-image img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+  }
+
+  .dining-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .dining-content h2 {
+    font-size: 2.5rem;
+    font-weight: 300;
+  }
+
+  .dining-intro {
+    color: var(--text-light);
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+  }
+
+  .dining-note {
+    font-size: 0.82rem;
+    color: var(--gold);
+    font-style: italic;
+    font-family: var(--font-heading);
+    margin-bottom: 2rem;
+    font-size: 1rem;
+  }
+
+  .menu-highlights h4 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: var(--primary);
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.05em;
+  }
+
+  .dish {
+    margin-bottom: 1.25rem;
+  }
+
+  .dish-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .dish-name {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--primary);
+    white-space: nowrap;
+  }
+
+  .dish-line {
+    flex: 1;
+    border-bottom: 1px dotted #d6d3d1;
+    min-width: 20px;
+  }
+
+  .dish-price {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+
+  .dish-desc {
+    font-size: 0.85rem;
+    color: var(--text-light);
+  }
+
+  .menu-highlights {
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 900px) {
+    .dining-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .dining-image img { height: 350px; }
+  }
+</style>

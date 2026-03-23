@@ -1,0 +1,172 @@
+---
+---
+<header class="header" id="header">
+  <div class="header-inner container">
+    <a href="/" class="logo">
+      <span class="logo-symbol">&#9788;</span>
+      <div class="logo-text">
+        <span class="logo-name">CASA INTI</span>
+        <span class="logo-tagline">Hotel Boutique &middot; Cusco</span>
+      </div>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="nav">
+      <a href="/">Inicio</a>
+      <a href="/habitaciones">Habitaciones</a>
+      <a href="/#experiencias">Experiencias</a>
+      <a href="/#gastronomia">Gastronomia</a>
+      <a href="/#galeria">Galeria</a>
+      <a href="/#reservar" class="btn btn-gold nav-cta">Reservar Ahora</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('header');
+  const menuToggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('nav');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      header?.classList.add('scrolled');
+    } else {
+      header?.classList.remove('scrolled');
+    }
+  });
+
+  menuToggle?.addEventListener('click', () => {
+    nav?.classList.toggle('open');
+    menuToggle.classList.toggle('active');
+  });
+</script>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 1.25rem 0;
+    transition: all 0.4s ease;
+    background: transparent;
+  }
+
+  .header.scrolled {
+    background: var(--cream);
+    box-shadow: 0 1px 0 rgba(184,134,11,0.15);
+    padding: 0.75rem 0;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.4s ease;
+  }
+
+  .scrolled .logo { color: var(--primary); }
+
+  .logo-symbol {
+    font-size: 2rem;
+    color: var(--gold);
+  }
+
+  .logo-name {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    letter-spacing: 0.2em;
+    font-weight: 500;
+    display: block;
+  }
+
+  .logo-tagline {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    display: block;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 400;
+    transition: color 0.3s;
+  }
+
+  .nav a:hover { color: var(--gold-light); }
+
+  .scrolled .nav a { color: var(--secondary); }
+  .scrolled .nav a:hover { color: var(--gold); }
+
+  .nav-cta {
+    padding: 0.6rem 1.5rem !important;
+    font-size: 0.75rem !important;
+  }
+
+  .nav-cta.btn-gold {
+    color: #fff !important;
+  }
+
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .menu-toggle span {
+    width: 24px;
+    height: 2px;
+    background: #fff;
+    transition: all 0.3s;
+  }
+
+  .scrolled .menu-toggle span { background: var(--primary); }
+
+  .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .menu-toggle.active span:nth-child(2) { opacity: 0; }
+  .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+  @media (max-width: 900px) {
+    .menu-toggle { display: flex; }
+    .nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100vh;
+      background: var(--cream);
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.5rem;
+      transition: right 0.4s ease;
+      box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+    }
+    .nav.open { right: 0; }
+    .nav a { color: var(--secondary) !important; font-size: 0.9rem; }
+  }
+</style>

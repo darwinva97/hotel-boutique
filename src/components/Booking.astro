@@ -1,0 +1,187 @@
+---
+---
+<section class="booking section" id="reservar">
+  <div class="container">
+    <div class="booking-wrapper">
+      <div class="booking-info">
+        <p class="booking-label">Reservaciones</p>
+        <h2>Reserve su Estadia</h2>
+        <div class="gold-divider" style="justify-content:flex-start;"><span>&#9788;</span></div>
+        <p>Complete el formulario y nuestro equipo de reservaciones le confirmara la disponibilidad en un maximo de 2 horas.</p>
+        <div class="booking-guarantee">
+          <span class="guarantee-icon">&#9733;</span>
+          <div>
+            <strong>Mejor precio garantizado</strong>
+            <p>Reservando directamente obtendra el mejor precio disponible y beneficios exclusivos.</p>
+          </div>
+        </div>
+        <div class="booking-contact">
+          <p><strong>Reservas directas:</strong></p>
+          <p><a href="tel:+5184234567">+51 84 234 567</a></p>
+          <p><a href="mailto:reservas@casainti.pe">reservas@casainti.pe</a></p>
+          <p class="whatsapp"><a href="#">WhatsApp: +51 984 567 890</a></p>
+        </div>
+        <p class="booking-policy">Cancelacion gratuita hasta 72 horas antes del check-in. Se requiere tarjeta de credito para garantizar la reserva.</p>
+      </div>
+      <form class="booking-form" action="#" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="checkin">Check-in</label>
+            <input type="date" id="checkin" name="checkin" required />
+          </div>
+          <div class="form-group">
+            <label for="checkout">Check-out</label>
+            <input type="date" id="checkout" name="checkout" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="guests">Huespedes</label>
+            <select id="guests" name="guests">
+              <option value="1">1 huesped</option>
+              <option value="2" selected>2 huespedes</option>
+              <option value="3">3 huespedes</option>
+              <option value="4">4 huespedes</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="room">Tipo de Habitacion</label>
+            <select id="room" name="room">
+              <option value="inti">Habitacion Inti - $180</option>
+              <option value="quilla">Suite Quilla - $280</option>
+              <option value="imperial">Suite Imperial - $380</option>
+              <option value="pachacamac">Suite Pachacamac - $520</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="name">Nombre completo</label>
+          <input type="text" id="name" name="name" placeholder="Su nombre completo" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Correo electronico</label>
+          <input type="email" id="email" name="email" placeholder="su@email.com" required />
+        </div>
+        <div class="form-group">
+          <label for="requests">Solicitudes especiales</label>
+          <textarea id="requests" name="requests" rows="3" placeholder="Celebraciones, preferencias alimentarias, hora de llegada..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold booking-submit">Solicitar Reserva</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  .booking {
+    background: var(--cream);
+  }
+
+  .booking-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .booking-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .booking-info h2 {
+    font-size: 2.5rem;
+    font-weight: 300;
+  }
+
+  .booking-info > p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .booking-guarantee {
+    display: flex;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: rgba(184,134,11,0.08);
+    border-left: 3px solid var(--gold);
+    margin-bottom: 1.5rem;
+  }
+
+  .guarantee-icon {
+    color: var(--gold);
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .booking-guarantee strong {
+    font-size: 0.9rem;
+    color: var(--primary);
+  }
+
+  .booking-guarantee p {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-top: 0.25rem;
+  }
+
+  .booking-contact {
+    margin-bottom: 1.5rem;
+  }
+
+  .booking-contact p {
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .booking-contact a {
+    color: var(--gold);
+  }
+
+  .booking-policy {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    font-style: italic;
+    border-top: 1px solid rgba(184,134,11,0.15);
+    padding-top: 1rem;
+  }
+
+  .booking-form {
+    background: #fff;
+    padding: 2.5rem;
+    border: 1px solid rgba(184,134,11,0.15);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+
+  .booking-submit {
+    width: 100%;
+    padding: 1rem;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+  }
+
+  @media (max-width: 900px) {
+    .booking-wrapper {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .form-row { grid-template-columns: 1fr; }
+    .booking-form { padding: 1.5rem; }
+  }
+</style>

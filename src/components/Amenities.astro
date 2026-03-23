@@ -1,0 +1,81 @@
+---
+const amenities = [
+  { icon: '\u2728', name: 'Spa & Bienestar', desc: 'Rituales andinos y tratamientos de relajacion' },
+  { icon: '\u{1F37D}\uFE0F', name: 'Restaurante Sumaq', desc: 'Haute cuisine andina con productos locales' },
+  { icon: '\u{1F378}', name: 'Bar de Pisco', desc: 'Seleccion de piscos artesanales y cocteles de autor' },
+  { icon: '\u{1F6CE}\uFE0F', name: 'Room Service 24h', desc: 'Servicio a la habitacion las 24 horas' },
+  { icon: '\u{1F3E8}', name: 'Concierge Personal', desc: 'Asistencia personalizada para cada huesped' },
+  { icon: '\u{1F698}', name: 'Transfer Aeropuerto', desc: 'Recogida y traslado desde el aeropuerto' },
+  { icon: '\u{1F4F6}', name: 'WiFi Premium', desc: 'Conexion de alta velocidad en todo el hotel' },
+  { icon: '\u{1F455}', name: 'Lavanderia', desc: 'Servicio de lavanderia y planchado express' },
+];
+---
+<section class="amenities section">
+  <div class="container">
+    <p class="section-label">Servicios</p>
+    <h2 class="section-title">Comodidades del Hotel</h2>
+    <div class="gold-divider"><span>&#9788;</span></div>
+    <p class="section-subtitle">Todo lo que necesita para una estadia perfecta en el corazon de Cusco</p>
+    <div class="amenities-grid">
+      {amenities.map((a) => (
+        <div class="amenity-item">
+          <span class="amenity-icon">{a.icon}</span>
+          <h4>{a.name}</h4>
+          <p>{a.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-label {
+    text-align: center;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .amenities {
+    background: var(--cream);
+  }
+
+  .amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+  }
+
+  .amenity-item {
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+
+  .amenity-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .amenity-item h4 {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .amenity-item p {
+    font-size: 0.85rem;
+    color: var(--text-light);
+  }
+
+  @media (max-width: 900px) {
+    .amenities-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  }
+
+  @media (max-width: 500px) {
+    .amenities-grid { grid-template-columns: 1fr; }
+  }
+</style>

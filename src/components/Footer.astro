@@ -1,0 +1,181 @@
+---
+---
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo-symbol">&#9788;</span>
+        <h3 class="footer-logo">CASA INTI</h3>
+        <p class="footer-tagline">Un refugio de lujo en el corazon del Cusco</p>
+        <div class="footer-awards">
+          <div class="award">
+            <span class="award-icon">&#9733;</span>
+            <span>TripAdvisor Traveler's Choice 2025</span>
+          </div>
+          <div class="award">
+            <span class="award-icon">&#9733;</span>
+            <span>Luxury Hotels of Peru</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Enlaces</h4>
+        <a href="/">Inicio</a>
+        <a href="/habitaciones">Habitaciones</a>
+        <a href="/#experiencias">Experiencias</a>
+        <a href="/#gastronomia">Gastronomia</a>
+        <a href="/#galeria">Galeria</a>
+      </div>
+      <div class="footer-links">
+        <h4>Habitaciones</h4>
+        <a href="/habitaciones">Habitacion Inti</a>
+        <a href="/habitaciones">Suite Quilla</a>
+        <a href="/habitaciones/suite-imperial">Suite Imperial</a>
+        <a href="/habitaciones">Suite Pachacamac</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contacto</h4>
+        <p>Calle Hatunrumiyoc 487<br />Cusco, Peru</p>
+        <p><a href="tel:+5184234567">+51 84 234 567</a></p>
+        <p><a href="mailto:reservas@casainti.pe">reservas@casainti.pe</a></p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="Facebook">FB</a>
+          <a href="#" aria-label="WhatsApp">WA</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Casa Inti Hotel Boutique. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--bg-dark);
+    color: rgba(255,255,255,0.7);
+    padding: 5rem 0 0;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(184,134,11,0.2);
+  }
+
+  .footer-logo-symbol {
+    font-size: 2.5rem;
+    color: var(--gold);
+  }
+
+  .footer-logo {
+    font-family: var(--font-heading);
+    color: #fff;
+    letter-spacing: 0.2em;
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin: 0.5rem 0 0.75rem;
+  }
+
+  .footer-tagline {
+    font-size: 0.95rem;
+    font-style: italic;
+    font-family: var(--font-heading);
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-awards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .award {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .award-icon { color: var(--gold); }
+
+  .footer-links h4,
+  .footer-contact h4 {
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.25rem;
+    font-weight: 400;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer-links a {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.88rem;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  .footer-contact p {
+    font-size: 0.88rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+
+  .footer-contact a {
+    color: rgba(255,255,255,0.6);
+  }
+
+  .footer-contact a:hover { color: var(--gold); }
+
+  .footer-social {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .footer-social a {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.3s;
+  }
+
+  .footer-social a:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .footer-bottom {
+    text-align: center;
+    padding: 1.5rem 0;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+  }
+
+  @media (max-width: 900px) {
+    .footer-top {
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .footer-top {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>

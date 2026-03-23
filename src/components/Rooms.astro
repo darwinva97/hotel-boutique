@@ -1,0 +1,218 @@
+---
+const rooms = [
+  {
+    name: 'Habitacion Inti',
+    type: 'Superior',
+    price: 180,
+    size: '25m\u00b2',
+    image: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&q=80',
+    description: 'Acogedora habitacion con vista a la ciudad, decorada con textiles andinos y detalles en madera.',
+    amenities: ['WiFi', 'TV', 'Minibar', 'Caja fuerte', 'Calefaccion'],
+    view: 'Vista a la ciudad',
+    slug: '/habitaciones',
+  },
+  {
+    name: 'Suite Quilla',
+    type: 'Junior Suite',
+    price: 280,
+    size: '40m\u00b2',
+    image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80',
+    description: 'Elegante suite con vista al patio interior, chimenea de piedra y sala de estar independiente.',
+    amenities: ['WiFi', 'TV', 'Minibar', 'Chimenea', 'Sala de estar', 'Calefaccion'],
+    view: 'Patio interior + Chimenea',
+    slug: '/habitaciones',
+  },
+  {
+    name: 'Suite Imperial',
+    type: 'Suite',
+    price: 380,
+    size: '55m\u00b2',
+    image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80',
+    description: 'Lujosa suite con terraza privada, jacuzzi y vistas espectaculares a las montanas cusquenas.',
+    amenities: ['WiFi', 'TV', 'Minibar', 'Jacuzzi', 'Terraza', 'Chimenea', 'Calefaccion'],
+    view: 'Terraza + Jacuzzi + Vista a montanas',
+    slug: '/habitaciones/suite-imperial',
+  },
+  {
+    name: 'Suite Pachacamac',
+    type: 'Grand Suite',
+    price: 520,
+    size: '75m\u00b2',
+    image: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600&q=80',
+    description: 'Nuestra suite mas exclusiva: dos ambientes, terraza privada y vista panoramica de 180 grados.',
+    amenities: ['WiFi', 'TV 65"', 'Minibar premium', 'Jacuzzi', 'Terraza privada', 'Chimenea', '2 ambientes', 'Mayordomo'],
+    view: '2 ambientes + Terraza + Vista panoramica',
+    slug: '/habitaciones',
+  },
+];
+---
+<section class="rooms section" id="habitaciones">
+  <div class="container">
+    <p class="section-label">Alojamiento</p>
+    <h2 class="section-title">Nuestras Habitaciones</h2>
+    <div class="gold-divider"><span>&#9788;</span></div>
+    <p class="section-subtitle">Cada habitacion es una pieza unica que combina la elegancia colonial con el confort contemporaneo</p>
+    <div class="rooms-grid">
+      {rooms.map((room) => (
+        <div class="room-card">
+          <div class="room-image">
+            <img src={room.image} alt={room.name} loading="lazy" />
+            <span class="room-type">{room.type}</span>
+          </div>
+          <div class="room-info">
+            <h3>{room.name}</h3>
+            <p class="room-view">{room.view}</p>
+            <p class="room-desc">{room.description}</p>
+            <div class="room-amenities">
+              {room.amenities.slice(0, 4).map((a) => (
+                <span class="room-amenity">{a}</span>
+              ))}
+            </div>
+            <div class="room-footer">
+              <div class="room-price">
+                <span class="price-amount">${room.price}</span>
+                <span class="price-unit">/ noche</span>
+              </div>
+              <div class="room-meta">{room.size}</div>
+            </div>
+            <a href={room.slug} class="btn btn-outline-dark room-btn">Ver Detalles</a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-label {
+    text-align: center;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .room-card {
+    border: 1px solid rgba(184,134,11,0.15);
+    background: #fff;
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+  }
+
+  .room-card:hover {
+    box-shadow: 0 8px 30px rgba(28,25,23,0.08);
+  }
+
+  .room-image {
+    position: relative;
+    height: 260px;
+    overflow: hidden;
+  }
+
+  .room-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .room-card:hover .room-image img {
+    transform: scale(1.05);
+  }
+
+  .room-type {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--gold);
+    color: #fff;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .room-info {
+    padding: 1.75rem;
+  }
+
+  .room-info h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 0.25rem;
+  }
+
+  .room-view {
+    font-size: 0.8rem;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+
+  .room-desc {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+  }
+
+  .room-amenities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .room-amenity {
+    font-size: 0.72rem;
+    padding: 0.25rem 0.6rem;
+    border: 1px solid #e7e5e4;
+    color: var(--text-light);
+    letter-spacing: 0.03em;
+  }
+
+  .room-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(184,134,11,0.1);
+  }
+
+  .price-amount {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    color: var(--primary);
+    font-weight: 500;
+  }
+
+  .price-unit {
+    font-size: 0.8rem;
+    color: var(--text-light);
+  }
+
+  .room-meta {
+    font-size: 0.85rem;
+    color: var(--text-light);
+  }
+
+  .room-btn {
+    display: block;
+    text-align: center;
+    width: 100%;
+    font-size: 0.78rem;
+  }
+
+  @media (max-width: 768px) {
+    .rooms-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
